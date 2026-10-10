@@ -1,531 +1,256 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استمارة الممارسات التأملية - الثانوية الأولى بالحليلة</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f3f4f6;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* تنسيقات الطباعة الخاصة بصفحة A4 */
-        @media print {
-            body {
-                background-color: #ffffff !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .a4-page {
-                box-shadow: none !important;
-                margin: 0 !important;
-                width: 210mm !important;
-                height: 297mm !important;
-                max-height: 297mm !important;
-                padding: 4mm 6mm !important;
-                border: none !important;
-                page-break-after: avoid;
-                overflow: hidden !important;
-                transform: none !important;
-            }
-            @page {
-                size: A4 portrait;
-                margin: 0mm;
-            }
-            table {
-                font-size: 6px !important;
-            }
-            th, td {
-                padding: 0.2px 1px !important;
-            }
-        }
-
-        /* تنسيق العرض على شاشات اللابتوب والايباد والجوال */
-        .a4-page {
-            width: 100%;
-            max-width: 210mm;
-            min-height: auto;
-            margin: 10px auto;
-            background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            padding: 12px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-radius: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .a4-page {
-                height: 297mm;
-                max-height: 297mm;
-                padding: 4mm 8mm;
-                margin: 20px auto;
-                border-radius: 0px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="rasm-revision" content="taml-signatures-20261010">
+<title>استمارة الممارسات التأملية - الثانوية الأولى بالحليلة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/taml/vice-principal-signature-20261010.png">
+<link rel="preload" as="image" href="assets/taml/principal-signature-20261010.png">
+<link rel="preload" as="image" href="assets/taml/school-stamp-20261010.png">
+<style>
+/* Local layout rules keep the form printable even when a styling CDN is unavailable. */
+* { box-sizing: border-box; }
+body { margin: 0; padding: 12px; background: #f3f4f6; color: #172b29; font-family: 'Cairo', Arial, sans-serif; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+.toolbar { max-width: 210mm; margin: 0 auto 12px; padding: 12px; background: white; border-radius: 12px; box-shadow: 0 3px 10px #00000012; }
+.toolbar h1 { margin: 0 0 4px; font-size: 14px; }
+.toolbar p { margin: 0 0 10px; font-size: 11px; color: #6b7280; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.button { border: 0; border-radius: 8px; padding: 8px 14px; color: white; font-size: 12px; font-weight: 700; }
+.button--drive { background: #2563eb; }
+.button--print { background: #047857; }
+.button--reset { background: #e5e7eb; color: #374151; }
+.button:focus-visible, input:focus-visible { outline: 2px solid #0d9488; outline-offset: 2px; }
+.a4-page { width: 100%; max-width: 210mm; margin: 0 auto; padding: 6mm; background: white; box-shadow: 0 10px 25px #0000001a; }
+.document-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 7px 10px; margin-bottom: 6px; background: #134e4a; color: white; border-radius: 8px 8px 0 0; }
+.document-header h2 { margin: 0; font-size: 14px; line-height: 1.5; }
+.document-title { margin: 2px 0 0; font-size: 10px; color: #ccfbf1; }
+.ministry { display: flex; align-items: center; gap: 8px; flex-shrink: 0; font-size: 9px; line-height: 1.5; }
+.ministry small { display: block; font-size: 7px; color: #99f6e4; }
+.ministry img { display: block; width: 40px; height: 32px; object-fit: contain; }
+.teacher-info { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; padding: 6px; margin-bottom: 6px; border: 1px solid #e5e7eb; border-radius: 6px; background: #f9fafb; }
+.teacher-info label { display: block; margin-bottom: 2px; font-size: 10px; font-weight: 700; color: #4b5563; }
+.teacher-info input { width: 100%; min-width: 0; padding: 3px 6px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 12px; line-height: 1.5; background: white; color: #111827; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; min-width: 610px; border-collapse: collapse; table-layout: fixed; font-size: 10.4px; line-height: 1.45; }
+col.stage-column { width: 78px; }
+col.answer-column { width: 44px; }
+col.improvement-column { width: 60px; }
+th, td { border: 1px solid #d1d5db; padding: 2px 4px; vertical-align: middle; }
+thead th { font-size: 9.5px; background: #115e59; color: white; font-weight: 700; text-align: center; height: 28px; }
+thead .practice-heading { text-align: right; }
+tbody tr { height: 21px; }
+tbody tr:hover td { background: #f9fafb; }
+.stage { background: #ecfdf5; color: #064e3b; text-align: center; font-size: 10px; font-weight: 700; }
+.practice { text-align: right; overflow-wrap: break-word; }
+.answer { text-align: center; padding: 1px; }
+.answer input { display: inline-block; width: 11px; height: 11px; margin: 0; vertical-align: middle; accent-color: #059669; cursor: pointer; }
+/* The seal has its own column: it cannot overlap either signature or a name. */
+.approvals { display: grid; grid-template-columns: minmax(0,1fr) 138px minmax(0,1fr); gap: 10px; align-items: stretch; margin-top: 8px; padding-top: 6px; border-top: 1px solid #e5e7eb; break-inside: avoid; page-break-inside: avoid; }
+.signature-card { padding: 5px 7px; border: 1px solid #e5e7eb; border-radius: 5px; background: #f9fafb; min-width: 0; }
+.signature-role { font-size: 9.5px; line-height: 1.5; color: #4b5563; }
+.signature-name { margin-top: 2px; font-size: 11px; line-height: 1.5; font-weight: 900; color: #064e3b; }
+.signature-line { display: flex; align-items: center; justify-content: center; gap: 7px; height: 59px; margin-top: 4px; border-top: 1px dashed #d1d5db; font-size: 9px; color: #6b7280; }
+.signature-image { display: block; width: 150px; max-width: calc(100% - 34px); height: 56px; object-fit: contain; flex-shrink: 1; }
+.seal { display: flex; align-items: center; justify-content: center; min-width: 0; }
+.seal img { display: block; width: 138px; max-width: 100%; height: 94px; object-fit: contain; }
+.modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: #00000080; padding: 16px; }
+.modal-panel { width: 100%; max-width: 380px; padding: 20px; border-radius: 12px; background: white; text-align: center; box-shadow: 0 10px 30px #00000030; }
+#modalIcon { font-size: 32px; }
+#modalTitle { font-size: 16px; }
+#modalText { font-size: 12px; }
+@media screen and (max-width: 640px) {
+    body { padding: 8px; }
+    .a4-page { padding: 10px; }
+    .document-header h2 { font-size: 12px; }
+    .ministry-text { display: none; }
+    .teacher-info { grid-template-columns: 1fr; }
+    .teacher-info input { padding: 6px; }
+    .approvals { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+    .seal { grid-column: 1 / -1; grid-row: 2; }
+    .signature-role { min-height: 29px; }
+    .signature-name { font-size: 10px; }
+    .signature-line { height: 54px; gap: 3px; }
+}
+/* Natural document height, zero body padding and explicit print columns avoid a second sheet.
+   Do not clip overflow or hide form rows to fit the page. */
+@page { size: A4 portrait; margin: 6mm; }
+@media print {
+    html, body { width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print, #googleSheetForm, #hidden_iframe { display: none !important; }
+    .a4-page { width: 198mm !important; max-width: none !important; height: auto !important; min-height: 0 !important; max-height: none !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; border: 0 !important; overflow: visible !important; }
+    .document-header { padding: 5px 9px; margin-bottom: 5px; }
+    .document-header h2 { font-size: 12px; }
+    .document-title { font-size: 9px; }
+    .ministry-text { display: block !important; }
+    .teacher-info { grid-template-columns: repeat(3,minmax(0,1fr)) !important; padding: 5px; gap: 7px; margin-bottom: 5px; }
+    .teacher-info label { font-size: 9px; }
+    .teacher-info input { padding: 2px 5px; font-size: 11px; }
+    .teacher-info input::placeholder { color: transparent; }
+    .table-wrap { overflow: visible !important; }
+    table { width: 100%; min-width: 0 !important; font-size: 10.4px; line-height: 1.45; }
+    thead { display: table-header-group; }
+    thead th { height: 25px; }
+    th, td { padding: 1.4px 3px; }
+    tbody tr { height: 20.8px; break-inside: avoid; page-break-inside: avoid; }
+    .answer { padding: 1px; }
+    .stage { font-size: 9.5px; }
+    .approvals { grid-template-columns: minmax(0,1fr) 138px minmax(0,1fr) !important; gap: 10px; margin-top: 7px; padding-top: 5px; }
+    .seal { grid-column: auto !important; grid-row: auto !important; }
+    .signature-role { min-height: 0; font-size: 9.5px; }
+    .signature-name { font-size: 11px; }
+    .signature-line { height: 59px; gap: 7px; }
+}
+</style>
 </head>
-<body class="py-2 px-2 sm:px-4">
-
-    <div class="max-w-[210mm] mx-auto mb-3 flex flex-col sm:flex-row justify-between items-center bg-white p-3 rounded-xl shadow-md no-print gap-3">
-        <div>
-            <h1 class="text-sm font-bold text-gray-800 text-center sm:text-right">استمارة الممارسات التأملية التفاعلية المرتبطة بـ Google Forms & Drive</h1>
-            <p class="text-[11px] text-gray-500 text-center sm:text-right">تم ربط النموذج ليتم إرسال كافة الإجابات وحفظ النسخة تلقائياً على Google Drive وGoogle Sheets.</p>
-        </div>
-        <div class="flex gap-2 w-full sm:w-auto justify-center flex-wrap">
-            <button type="button" onclick="submitToGoogleForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold shadow transition flex items-center justify-center gap-2 text-xs cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-                إرسال وحفظ في Google Drive
-            </button>
-            <button type="button" onclick="handlePrint()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-bold shadow transition flex items-center justify-center gap-2 text-xs cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                </svg>
-                تصدير PDF (حفظ محلي)
-            </button>
-            <button type="button" onclick="resetForm()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-2 rounded-lg font-bold transition text-xs cursor-pointer">
-                إعادة ضبط
-            </button>
-        </div>
+<body>
+<div class="toolbar no-print">
+    <h1>استمارة الممارسات التأملية التفاعلية المرتبطة بـ Google Forms &amp; Drive</h1>
+    <p>تم ربط النموذج ليتم إرسال كافة الإجابات وحفظ النسخة تلقائياً على Google Drive وGoogle Sheets.</p>
+    <div class="actions">
+        <button type="button" onclick="submitToGoogleForm()" class="button button--drive">إرسال وحفظ في Google Drive</button>
+        <button type="button" onclick="handlePrint()" class="button button--print">تصدير PDF (حفظ محلي)</button>
+        <button type="button" onclick="resetForm()" class="button button--reset">إعادة ضبط</button>
     </div>
-
-    <!-- النموذج المخفي للربط مع Google Forms (يتم تعبئته وإرساله برمجياً) -->
-    <form id="googleSheetForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd...YOUR_FORM_ID_HERE.../formResponse" method="POST" target="hidden_iframe" class="hidden">
-        <input type="hidden" name="entry.111111111" id="g_teacherName">
-        <input type="hidden" name="entry.222222222" id="g_subject">
-        <input type="hidden" name="entry.333333333" id="g_term">
-        <!-- حقول الأسئلة الـ 36 -->
-        <!-- يتم توليدها ديناميكياً أو تعبئتها عبر الجافاسكريبت -->
-    </form>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(isSubmitted) { showSuccessMsg(); }"></iframe>
-
-    <div class="a4-page">
-        <div class="flex flex-col flex-grow justify-between">
-            <!-- Header Banner -->
-            <div class="bg-teal-900 text-white p-2 rounded-t-lg flex justify-between items-center mb-1.5">
-                <div>
-                    <h2 class="text-xs sm:text-sm font-bold text-teal-100">المدرسة الثانوية الأولى بالحليلة</h2>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="text-left hidden sm:block">
-                        <div class="text-[8px] text-teal-200 font-semibold">وزارة التعليم</div>
-                        <div class="text-[7px] text-teal-300">Ministry of Education</div>
-                    </div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Ministry_of_Education_%28Saudi_Arabia%29.svg" alt="شعار وزارة التعليم" class="h-6 sm:h-7 w-auto bg-white/10 p-1 rounded border border-white/20" crossorigin="anonymous">
-                </div>
-            </div>
-
-            <!-- Teacher Info Bar -->
-            <div class="p-1.5 bg-gray-50 border border-gray-200 rounded-lg mb-1.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                <div>
-                    <label class="block font-bold text-gray-600 mb-0.5 text-[10px]">اسم المعلمة / المعلم:</label>
-                    <input type="text" id="teacherName" placeholder="الثلاثي..." class="w-full bg-white border border-gray-300 rounded p-1.5 sm:p-1 focus:ring-1 focus:ring-teal-500 focus:outline-none text-xs">
-                </div>
-                <div>
-                    <label class="block font-bold text-gray-600 mb-0.5 text-[10px]">المادة:</label>
-                    <input type="text" id="subjectName" placeholder="المادة الدراسية..." class="w-full bg-white border border-gray-300 rounded p-1.5 sm:p-1 focus:ring-1 focus:ring-teal-500 focus:outline-none text-xs">
-                </div>
-                <div>
-                    <label class="block font-bold text-gray-600 mb-0.5 text-[10px]">الفصل الدراسي / العام:</label>
-                    <input type="text" id="termYear" value="1447 هـ" class="w-full bg-white border border-gray-300 rounded p-1.5 sm:p-1 focus:ring-1 focus:ring-teal-500 focus:outline-none text-xs">
-                </div>
-            </div>
-
-            <div class="overflow-x-auto flex-grow my-1 border border-gray-200 rounded">
-                <table class="w-full border-collapse text-right text-[7.55px] min-w-[320px] sm:min-w-0">
-                    <thead>
-                        <tr class="bg-teal-800 text-white font-bold text-center">
-                            <th class="p-1 border border-teal-700 w-16">المرحلة</th>
-                            <th class="p-1 border border-teal-700 text-right">الممارسة التأملية</th>
-                            <th class="p-1 border border-teal-700 w-8">دائماً</th>
-                            <th class="p-1 border border-teal-700 w-8">أحياناً</th>
-                            <th class="p-1 border border-teal-700 w-8">لا أمارسها</th>
-                            <th class="p-1 border border-teal-700 w-10">فرصة للتحسين</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200" id="questionsTableBody">
-
-                        <!-- قبل البدء في التدريس -->
-                        <tr class="hover:bg-gray-50">
-                            <td rowspan="7" class="p-1 border border-gray-200 font-bold bg-emerald-50 text-emerald-900 text-center align-middle text-[7.5px]">
-                                التأمل قبل التدريس
-                            </td>
-                            <td class="p-1 border border-gray-200">أتصور مسبقاً الإجراءات التدريسية التي ينبغي علي القيام بها أثناء تدريسي.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q1" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q1" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q1" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q1" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أتأمل الموضوعات الأساسية التي أقرأها، أشاهدها، أسمعها للاستفادة منها.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q2" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q2" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q2" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q2" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أطلع على أبحاث ومقالات حول الممارسات المتعلقة بالتدريس.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q3" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q3" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q3" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q3" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أدوّن بعض تجارب الآخرين الناجحة في التدريس.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q4" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q4" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q4" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q4" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أسعى إلى توظيف معارف جديدة في التدريس.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q5" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q5" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q5" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q5" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أفكر كثيراً فيما سأقوم بتدريسه للطلبة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q6" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q6" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q6" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q6" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أعمل على إعداد خطة تدريسية باستمرار.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q7" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q7" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q7" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q7" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-
-                        <!-- التأمل أثناء التدريس -->
-                        <tr class="hover:bg-gray-50">
-                            <td rowspan="23" class="p-1 border border-gray-200 font-bold bg-emerald-50 text-emerald-900 text-center align-middle text-[7.5px]">
-                                التأمل أثناء التدريس
-                            </td>
-                            <td class="p-1 border border-gray-200">أستخدم التقويم الهادف إلى تحسين عملية التعلم وكسب المعرفة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q8" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q8" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q8" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q8" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أستوعب المفاهيم العلمية بالقدر الذي يمكنني من التدريس الفعال.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q9" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q9" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q9" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q9" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أعمل على إقناع الطلبة بأهمية ما يدرسون.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q10" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q10" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q10" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q10" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أقدم المادة الدراسية بشكل يثير التفكير والتأمل عند الطلبة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q11" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q11" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q11" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q11" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أوظف الخيال والتساؤل لدى الطلبة للتعبير عن آرائهم.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q12" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q12" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q12" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q12" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أستخدم استراتيجيات التدريس بكفاءة عالية.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q13" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q13" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q13" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q13" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أقدم نشاطات تثير الاستكشاف والاستقصاء.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q14" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q14" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q14" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q14" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أتعامل مع الأنشطة بشكل فاعل.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q15" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q15" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q15" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q15" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أحاول التعرف على أنماط التفاعل الإيجابية والسلبية بين الطلبة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q16" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q16" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q16" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q16" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أشعر بالثقة في قدرتي على تحديد الاحتياجات التعليمية الفردية للطلبة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q17" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q17" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q17" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q17" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أستطيع تقديم الحلول البديلة للمشكلات التي تواجه الطالبات.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q18" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q18" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q18" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q18" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أحث الطلبة على توضيح ووصف الظواهر الطبيعية والاجتماعية.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q19" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q19" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q19" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q19" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أحفز الطلبة على التخيل والتنبؤ لتفسير الظواهر العلمية.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q20" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q20" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q20" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q20" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أستمع إلى ملاحظات الطلبة التأملية حول موضوعات الدرس المختلفة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q21" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q21" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q21" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q21" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أشجع الطلبة على التأمل في كل ما يقومون به أثناء الحصة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q22" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q22" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q22" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q22" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أدمج أدوات التكنولوجيا مع طرق التدريس الحديثة بطرق تحقق قيمة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q23" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q23" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q23" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q23" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أستخدم أساليب التقويم المختلفة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q24" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q24" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q24" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q24" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أتجنب إصدار أحكام على أعمال الطلبة قبل مراجعتها وتحليلها.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q25" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q25" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q25" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q25" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أجمع الملاحظات والأفكار والآراء التي يبديها الطلبة لتحليلها والتأمل بها.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q26" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q26" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q26" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q26" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أمنح الطلبة فرصة لتقديم التغذية الراجعة أثناء الحصة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q27" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q27" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q27" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q27" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أحرص على عقد مقارنة أثناء تدريسي بين حصة وحصص سابقة قمت بتنفيذها.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q28" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q28" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q28" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q28" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أسمح للآخرين (معلمين، طلبة، مدير، مشرف) بتقييم أدائي.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q29" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q29" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q29" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q29" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أوثق كل ما شعرت أنه غير مناسب في سجل خاص من أجل التحسين في المستقبل.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q30" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q30" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q30" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q30" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-
-                        <!-- بعد التدريس -->
-                        <tr class="hover:bg-gray-50">
-                            <td rowspan="6" class="p-1 border border-gray-200 font-bold bg-emerald-50 text-emerald-900 text-center align-middle text-[7.5px]">
-                                التأمل بعد التدريس
-                            </td>
-                            <td class="p-1 border border-gray-200">أفكر بعمق في ممارساتي التدريسية التي أشعر أنها غير مناسبة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q31" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q31" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q31" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q31" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أغير ممارساتي التدريسية التي بحاجة لذلك.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q32" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q32" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q32" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q32" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أناقش ممارساتي التدريسية مع زملائي الآخرين.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q33" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q33" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q33" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q33" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أشاهد حصص صفية ينفذها زملائي الآخرين.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q34" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q34" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q34" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q34" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">أمارس التعلم الذاتي للبحث عن المعرفة.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q35" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q35" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q35" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q35" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="p-1 border border-gray-200">سأستمر في البحث عن طرق أفضل للتدريس.</td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q36" value="دائماً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q36" value="أحياناً" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q36" value="لا أمارسها" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                            <td class="p-1 border border-gray-200 text-center"><input type="radio" name="q36" value="فرصة للتحسين" class="w-3 h-3 text-emerald-600 accent-emerald-600 cursor-pointer"></td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-1 pt-1 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                <!-- Vice Principal Section -->
-                <div class="bg-gray-50 p-1.5 rounded border border-gray-200 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[9px] text-gray-500">وكيلة الشؤون التعليمية والمدرسية:</span>
-                        <div class="text-[11px] font-black text-emerald-900 mt-0.5">أ. شيخه حبيب الحمود</div>
-                    </div>
-                    <div class="mt-1 pt-1 border-t border-dashed border-gray-300 flex justify-between items-center text-[9px] text-gray-500">
-                        <span class="flex items-center gap-1 w-full">
-                            التوقيع:
-                            <input type="text" placeholder="اكتب التوقيع..." class="flex-grow bg-white border border-gray-300 rounded px-1.5 py-0.5 text-xs focus:ring-1 focus:ring-teal-500 focus:outline-none">
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Principal Section -->
-                <div class="bg-gray-50 p-1.5 rounded border border-gray-200 flex flex-col justify-between relative overflow-hidden">
-                    <div class="relative z-0">
-                        <span class="text-[9px] text-gray-500">مديرة المدرسة:</span>
-                        <div class="text-[11px] font-black text-emerald-900 mt-0.5">أ. سهاد أحمد الكشي</div>
-                    </div>
-                    <div class="mt-1 pt-1 border-t border-dashed border-gray-300 flex justify-between items-center text-[9px] text-gray-500 relative z-0">
-                        <span class="flex items-center gap-1 w-full">
-                            التوقيع:
-                            <input type="text" placeholder="اكتب التوقيع..." class="flex-grow bg-white border border-gray-300 rounded px-1.5 py-0.5 text-xs focus:ring-1 focus:ring-teal-500 focus:outline-none">
-                        </span>
-                    </div>
-                </div>
-            </div>
+</div>
+<!-- Existing Google Forms configuration is retained; this change does not configure its integration. -->
+<form id="googleSheetForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd...YOUR_FORM_ID_HERE.../formResponse" method="POST" target="hidden_iframe" class="hidden">
+    <input type="hidden" name="entry.111111111" id="g_teacherName">
+    <input type="hidden" name="entry.222222222" id="g_subject">
+    <input type="hidden" name="entry.333333333" id="g_term">
+</form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<main class="a4-page">
+    <header class="document-header">
+        <div><h2>المدرسة الثانوية الأولى بالحليلة</h2><p class="document-title">استمارة الممارسات التأملية</p></div>
+        <div class="ministry">
+            <div class="ministry-text">وزارة التعليم<small>Ministry of Education</small></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Ministry_of_Education_%28Saudi_Arabia%29.svg" alt="شعار وزارة التعليم" onerror="this.style.display='none'">
         </div>
+    </header>
+    <section class="teacher-info" aria-label="بيانات المعلم">
+        <div><label for="teacherName">اسم المعلمة / المعلم:</label><input type="text" id="teacherName" placeholder="الثلاثي..."></div>
+        <div><label for="subjectName">المادة:</label><input type="text" id="subjectName" placeholder="المادة الدراسية..."></div>
+        <div><label for="termYear">الفصل الدراسي / العام:</label><input type="text" id="termYear" value="1447 هـ"></div>
+    </section>
+    <div class="table-wrap">
+        <table aria-label="بنود الممارسات التأملية">
+            <colgroup><col class="stage-column"><col><col class="answer-column"><col class="answer-column"><col class="answer-column"><col class="improvement-column"></colgroup>
+            <thead><tr><th scope="col">المرحلة</th><th scope="col" class="practice-heading">الممارسة التأملية</th><th scope="col" id="choice-1">دائماً</th><th scope="col" id="choice-2">أحياناً</th><th scope="col" id="choice-3">لا أمارسها</th><th scope="col" id="choice-4">فرصة للتحسين</th></tr></thead>
+            <tbody id="questionsTableBody">
+<tr><th scope="rowgroup" rowspan="7" class="stage">التأمل قبل التدريس</th><td class="practice" id="practice-1">أتصور مسبقاً الإجراءات التدريسية التي ينبغي علي القيام بها أثناء تدريسي.</td><td class="answer"><input type="radio" name="q1" value="دائماً" aria-labelledby="practice-1 choice-1"></td><td class="answer"><input type="radio" name="q1" value="أحياناً" aria-labelledby="practice-1 choice-2"></td><td class="answer"><input type="radio" name="q1" value="لا أمارسها" aria-labelledby="practice-1 choice-3"></td><td class="answer"><input type="radio" name="q1" value="فرصة للتحسين" aria-labelledby="practice-1 choice-4"></td></tr>
+<tr><td class="practice" id="practice-2">أتأمل الموضوعات الأساسية التي أقرأها، أشاهدها، أسمعها للاستفادة منها.</td><td class="answer"><input type="radio" name="q2" value="دائماً" aria-labelledby="practice-2 choice-1"></td><td class="answer"><input type="radio" name="q2" value="أحياناً" aria-labelledby="practice-2 choice-2"></td><td class="answer"><input type="radio" name="q2" value="لا أمارسها" aria-labelledby="practice-2 choice-3"></td><td class="answer"><input type="radio" name="q2" value="فرصة للتحسين" aria-labelledby="practice-2 choice-4"></td></tr>
+<tr><td class="practice" id="practice-3">أطلع على أبحاث ومقالات حول الممارسات المتعلقة بالتدريس.</td><td class="answer"><input type="radio" name="q3" value="دائماً" aria-labelledby="practice-3 choice-1"></td><td class="answer"><input type="radio" name="q3" value="أحياناً" aria-labelledby="practice-3 choice-2"></td><td class="answer"><input type="radio" name="q3" value="لا أمارسها" aria-labelledby="practice-3 choice-3"></td><td class="answer"><input type="radio" name="q3" value="فرصة للتحسين" aria-labelledby="practice-3 choice-4"></td></tr>
+<tr><td class="practice" id="practice-4">أدوّن بعض تجارب الآخرين الناجحة في التدريس.</td><td class="answer"><input type="radio" name="q4" value="دائماً" aria-labelledby="practice-4 choice-1"></td><td class="answer"><input type="radio" name="q4" value="أحياناً" aria-labelledby="practice-4 choice-2"></td><td class="answer"><input type="radio" name="q4" value="لا أمارسها" aria-labelledby="practice-4 choice-3"></td><td class="answer"><input type="radio" name="q4" value="فرصة للتحسين" aria-labelledby="practice-4 choice-4"></td></tr>
+<tr><td class="practice" id="practice-5">أسعى إلى توظيف معارف جديدة في التدريس.</td><td class="answer"><input type="radio" name="q5" value="دائماً" aria-labelledby="practice-5 choice-1"></td><td class="answer"><input type="radio" name="q5" value="أحياناً" aria-labelledby="practice-5 choice-2"></td><td class="answer"><input type="radio" name="q5" value="لا أمارسها" aria-labelledby="practice-5 choice-3"></td><td class="answer"><input type="radio" name="q5" value="فرصة للتحسين" aria-labelledby="practice-5 choice-4"></td></tr>
+<tr><td class="practice" id="practice-6">أفكر كثيراً فيما سأقوم بتدريسه للطلبة.</td><td class="answer"><input type="radio" name="q6" value="دائماً" aria-labelledby="practice-6 choice-1"></td><td class="answer"><input type="radio" name="q6" value="أحياناً" aria-labelledby="practice-6 choice-2"></td><td class="answer"><input type="radio" name="q6" value="لا أمارسها" aria-labelledby="practice-6 choice-3"></td><td class="answer"><input type="radio" name="q6" value="فرصة للتحسين" aria-labelledby="practice-6 choice-4"></td></tr>
+<tr><td class="practice" id="practice-7">أعمل على إعداد خطة تدريسية باستمرار.</td><td class="answer"><input type="radio" name="q7" value="دائماً" aria-labelledby="practice-7 choice-1"></td><td class="answer"><input type="radio" name="q7" value="أحياناً" aria-labelledby="practice-7 choice-2"></td><td class="answer"><input type="radio" name="q7" value="لا أمارسها" aria-labelledby="practice-7 choice-3"></td><td class="answer"><input type="radio" name="q7" value="فرصة للتحسين" aria-labelledby="practice-7 choice-4"></td></tr>
+<tr><th scope="rowgroup" rowspan="23" class="stage">التأمل أثناء التدريس</th><td class="practice" id="practice-8">أستخدم التقويم الهادف إلى تحسين عملية التعلم وكسب المعرفة.</td><td class="answer"><input type="radio" name="q8" value="دائماً" aria-labelledby="practice-8 choice-1"></td><td class="answer"><input type="radio" name="q8" value="أحياناً" aria-labelledby="practice-8 choice-2"></td><td class="answer"><input type="radio" name="q8" value="لا أمارسها" aria-labelledby="practice-8 choice-3"></td><td class="answer"><input type="radio" name="q8" value="فرصة للتحسين" aria-labelledby="practice-8 choice-4"></td></tr>
+<tr><td class="practice" id="practice-9">أستوعب المفاهيم العلمية بالقدر الذي يمكنني من التدريس الفعال.</td><td class="answer"><input type="radio" name="q9" value="دائماً" aria-labelledby="practice-9 choice-1"></td><td class="answer"><input type="radio" name="q9" value="أحياناً" aria-labelledby="practice-9 choice-2"></td><td class="answer"><input type="radio" name="q9" value="لا أمارسها" aria-labelledby="practice-9 choice-3"></td><td class="answer"><input type="radio" name="q9" value="فرصة للتحسين" aria-labelledby="practice-9 choice-4"></td></tr>
+<tr><td class="practice" id="practice-10">أعمل على إقناع الطلبة بأهمية ما يدرسون.</td><td class="answer"><input type="radio" name="q10" value="دائماً" aria-labelledby="practice-10 choice-1"></td><td class="answer"><input type="radio" name="q10" value="أحياناً" aria-labelledby="practice-10 choice-2"></td><td class="answer"><input type="radio" name="q10" value="لا أمارسها" aria-labelledby="practice-10 choice-3"></td><td class="answer"><input type="radio" name="q10" value="فرصة للتحسين" aria-labelledby="practice-10 choice-4"></td></tr>
+<tr><td class="practice" id="practice-11">أقدم المادة الدراسية بشكل يثير التفكير والتأمل عند الطلبة.</td><td class="answer"><input type="radio" name="q11" value="دائماً" aria-labelledby="practice-11 choice-1"></td><td class="answer"><input type="radio" name="q11" value="أحياناً" aria-labelledby="practice-11 choice-2"></td><td class="answer"><input type="radio" name="q11" value="لا أمارسها" aria-labelledby="practice-11 choice-3"></td><td class="answer"><input type="radio" name="q11" value="فرصة للتحسين" aria-labelledby="practice-11 choice-4"></td></tr>
+<tr><td class="practice" id="practice-12">أوظف الخيال والتساؤل لدى الطلبة للتعبير عن آرائهم.</td><td class="answer"><input type="radio" name="q12" value="دائماً" aria-labelledby="practice-12 choice-1"></td><td class="answer"><input type="radio" name="q12" value="أحياناً" aria-labelledby="practice-12 choice-2"></td><td class="answer"><input type="radio" name="q12" value="لا أمارسها" aria-labelledby="practice-12 choice-3"></td><td class="answer"><input type="radio" name="q12" value="فرصة للتحسين" aria-labelledby="practice-12 choice-4"></td></tr>
+<tr><td class="practice" id="practice-13">أستخدم استراتيجيات التدريس بكفاءة عالية.</td><td class="answer"><input type="radio" name="q13" value="دائماً" aria-labelledby="practice-13 choice-1"></td><td class="answer"><input type="radio" name="q13" value="أحياناً" aria-labelledby="practice-13 choice-2"></td><td class="answer"><input type="radio" name="q13" value="لا أمارسها" aria-labelledby="practice-13 choice-3"></td><td class="answer"><input type="radio" name="q13" value="فرصة للتحسين" aria-labelledby="practice-13 choice-4"></td></tr>
+<tr><td class="practice" id="practice-14">أقدم نشاطات تثير الاستكشاف والاستقصاء.</td><td class="answer"><input type="radio" name="q14" value="دائماً" aria-labelledby="practice-14 choice-1"></td><td class="answer"><input type="radio" name="q14" value="أحياناً" aria-labelledby="practice-14 choice-2"></td><td class="answer"><input type="radio" name="q14" value="لا أمارسها" aria-labelledby="practice-14 choice-3"></td><td class="answer"><input type="radio" name="q14" value="فرصة للتحسين" aria-labelledby="practice-14 choice-4"></td></tr>
+<tr><td class="practice" id="practice-15">أتعامل مع الأنشطة بشكل فاعل.</td><td class="answer"><input type="radio" name="q15" value="دائماً" aria-labelledby="practice-15 choice-1"></td><td class="answer"><input type="radio" name="q15" value="أحياناً" aria-labelledby="practice-15 choice-2"></td><td class="answer"><input type="radio" name="q15" value="لا أمارسها" aria-labelledby="practice-15 choice-3"></td><td class="answer"><input type="radio" name="q15" value="فرصة للتحسين" aria-labelledby="practice-15 choice-4"></td></tr>
+<tr><td class="practice" id="practice-16">أحاول التعرف على أنماط التفاعل الإيجابية والسلبية بين الطلبة.</td><td class="answer"><input type="radio" name="q16" value="دائماً" aria-labelledby="practice-16 choice-1"></td><td class="answer"><input type="radio" name="q16" value="أحياناً" aria-labelledby="practice-16 choice-2"></td><td class="answer"><input type="radio" name="q16" value="لا أمارسها" aria-labelledby="practice-16 choice-3"></td><td class="answer"><input type="radio" name="q16" value="فرصة للتحسين" aria-labelledby="practice-16 choice-4"></td></tr>
+<tr><td class="practice" id="practice-17">أشعر بالثقة في قدرتي على تحديد الاحتياجات التعليمية الفردية للطلبة.</td><td class="answer"><input type="radio" name="q17" value="دائماً" aria-labelledby="practice-17 choice-1"></td><td class="answer"><input type="radio" name="q17" value="أحياناً" aria-labelledby="practice-17 choice-2"></td><td class="answer"><input type="radio" name="q17" value="لا أمارسها" aria-labelledby="practice-17 choice-3"></td><td class="answer"><input type="radio" name="q17" value="فرصة للتحسين" aria-labelledby="practice-17 choice-4"></td></tr>
+<tr><td class="practice" id="practice-18">أستطيع تقديم الحلول البديلة للمشكلات التي تواجه الطالبات.</td><td class="answer"><input type="radio" name="q18" value="دائماً" aria-labelledby="practice-18 choice-1"></td><td class="answer"><input type="radio" name="q18" value="أحياناً" aria-labelledby="practice-18 choice-2"></td><td class="answer"><input type="radio" name="q18" value="لا أمارسها" aria-labelledby="practice-18 choice-3"></td><td class="answer"><input type="radio" name="q18" value="فرصة للتحسين" aria-labelledby="practice-18 choice-4"></td></tr>
+<tr><td class="practice" id="practice-19">أحث الطلبة على توضيح ووصف الظواهر الطبيعية والاجتماعية.</td><td class="answer"><input type="radio" name="q19" value="دائماً" aria-labelledby="practice-19 choice-1"></td><td class="answer"><input type="radio" name="q19" value="أحياناً" aria-labelledby="practice-19 choice-2"></td><td class="answer"><input type="radio" name="q19" value="لا أمارسها" aria-labelledby="practice-19 choice-3"></td><td class="answer"><input type="radio" name="q19" value="فرصة للتحسين" aria-labelledby="practice-19 choice-4"></td></tr>
+<tr><td class="practice" id="practice-20">أحفز الطلبة على التخيل والتنبؤ لتفسير الظواهر العلمية.</td><td class="answer"><input type="radio" name="q20" value="دائماً" aria-labelledby="practice-20 choice-1"></td><td class="answer"><input type="radio" name="q20" value="أحياناً" aria-labelledby="practice-20 choice-2"></td><td class="answer"><input type="radio" name="q20" value="لا أمارسها" aria-labelledby="practice-20 choice-3"></td><td class="answer"><input type="radio" name="q20" value="فرصة للتحسين" aria-labelledby="practice-20 choice-4"></td></tr>
+<tr><td class="practice" id="practice-21">أستمع إلى ملاحظات الطلبة التأملية حول موضوعات الدرس المختلفة.</td><td class="answer"><input type="radio" name="q21" value="دائماً" aria-labelledby="practice-21 choice-1"></td><td class="answer"><input type="radio" name="q21" value="أحياناً" aria-labelledby="practice-21 choice-2"></td><td class="answer"><input type="radio" name="q21" value="لا أمارسها" aria-labelledby="practice-21 choice-3"></td><td class="answer"><input type="radio" name="q21" value="فرصة للتحسين" aria-labelledby="practice-21 choice-4"></td></tr>
+<tr><td class="practice" id="practice-22">أشجع الطلبة على التأمل في كل ما يقومون به أثناء الحصة.</td><td class="answer"><input type="radio" name="q22" value="دائماً" aria-labelledby="practice-22 choice-1"></td><td class="answer"><input type="radio" name="q22" value="أحياناً" aria-labelledby="practice-22 choice-2"></td><td class="answer"><input type="radio" name="q22" value="لا أمارسها" aria-labelledby="practice-22 choice-3"></td><td class="answer"><input type="radio" name="q22" value="فرصة للتحسين" aria-labelledby="practice-22 choice-4"></td></tr>
+<tr><td class="practice" id="practice-23">أدمج أدوات التكنولوجيا مع طرق التدريس الحديثة بطرق تحقق قيمة.</td><td class="answer"><input type="radio" name="q23" value="دائماً" aria-labelledby="practice-23 choice-1"></td><td class="answer"><input type="radio" name="q23" value="أحياناً" aria-labelledby="practice-23 choice-2"></td><td class="answer"><input type="radio" name="q23" value="لا أمارسها" aria-labelledby="practice-23 choice-3"></td><td class="answer"><input type="radio" name="q23" value="فرصة للتحسين" aria-labelledby="practice-23 choice-4"></td></tr>
+<tr><td class="practice" id="practice-24">أستخدم أساليب التقويم المختلفة.</td><td class="answer"><input type="radio" name="q24" value="دائماً" aria-labelledby="practice-24 choice-1"></td><td class="answer"><input type="radio" name="q24" value="أحياناً" aria-labelledby="practice-24 choice-2"></td><td class="answer"><input type="radio" name="q24" value="لا أمارسها" aria-labelledby="practice-24 choice-3"></td><td class="answer"><input type="radio" name="q24" value="فرصة للتحسين" aria-labelledby="practice-24 choice-4"></td></tr>
+<tr><td class="practice" id="practice-25">أتجنب إصدار أحكام على أعمال الطلبة قبل مراجعتها وتحليلها.</td><td class="answer"><input type="radio" name="q25" value="دائماً" aria-labelledby="practice-25 choice-1"></td><td class="answer"><input type="radio" name="q25" value="أحياناً" aria-labelledby="practice-25 choice-2"></td><td class="answer"><input type="radio" name="q25" value="لا أمارسها" aria-labelledby="practice-25 choice-3"></td><td class="answer"><input type="radio" name="q25" value="فرصة للتحسين" aria-labelledby="practice-25 choice-4"></td></tr>
+<tr><td class="practice" id="practice-26">أجمع الملاحظات والأفكار والآراء التي يبديها الطلبة لتحليلها والتأمل بها.</td><td class="answer"><input type="radio" name="q26" value="دائماً" aria-labelledby="practice-26 choice-1"></td><td class="answer"><input type="radio" name="q26" value="أحياناً" aria-labelledby="practice-26 choice-2"></td><td class="answer"><input type="radio" name="q26" value="لا أمارسها" aria-labelledby="practice-26 choice-3"></td><td class="answer"><input type="radio" name="q26" value="فرصة للتحسين" aria-labelledby="practice-26 choice-4"></td></tr>
+<tr><td class="practice" id="practice-27">أمنح الطلبة فرصة لتقديم التغذية الراجعة أثناء الحصة.</td><td class="answer"><input type="radio" name="q27" value="دائماً" aria-labelledby="practice-27 choice-1"></td><td class="answer"><input type="radio" name="q27" value="أحياناً" aria-labelledby="practice-27 choice-2"></td><td class="answer"><input type="radio" name="q27" value="لا أمارسها" aria-labelledby="practice-27 choice-3"></td><td class="answer"><input type="radio" name="q27" value="فرصة للتحسين" aria-labelledby="practice-27 choice-4"></td></tr>
+<tr><td class="practice" id="practice-28">أحرص على عقد مقارنة أثناء تدريسي بين حصة وحصص سابقة قمت بتنفيذها.</td><td class="answer"><input type="radio" name="q28" value="دائماً" aria-labelledby="practice-28 choice-1"></td><td class="answer"><input type="radio" name="q28" value="أحياناً" aria-labelledby="practice-28 choice-2"></td><td class="answer"><input type="radio" name="q28" value="لا أمارسها" aria-labelledby="practice-28 choice-3"></td><td class="answer"><input type="radio" name="q28" value="فرصة للتحسين" aria-labelledby="practice-28 choice-4"></td></tr>
+<tr><td class="practice" id="practice-29">أسمح للآخرين (معلمين، طلبة، مدير، مشرف) بتقييم أدائي.</td><td class="answer"><input type="radio" name="q29" value="دائماً" aria-labelledby="practice-29 choice-1"></td><td class="answer"><input type="radio" name="q29" value="أحياناً" aria-labelledby="practice-29 choice-2"></td><td class="answer"><input type="radio" name="q29" value="لا أمارسها" aria-labelledby="practice-29 choice-3"></td><td class="answer"><input type="radio" name="q29" value="فرصة للتحسين" aria-labelledby="practice-29 choice-4"></td></tr>
+<tr><td class="practice" id="practice-30">أوثق كل ما شعرت أنه غير مناسب في سجل خاص من أجل التحسين في المستقبل.</td><td class="answer"><input type="radio" name="q30" value="دائماً" aria-labelledby="practice-30 choice-1"></td><td class="answer"><input type="radio" name="q30" value="أحياناً" aria-labelledby="practice-30 choice-2"></td><td class="answer"><input type="radio" name="q30" value="لا أمارسها" aria-labelledby="practice-30 choice-3"></td><td class="answer"><input type="radio" name="q30" value="فرصة للتحسين" aria-labelledby="practice-30 choice-4"></td></tr>
+<tr><th scope="rowgroup" rowspan="6" class="stage">التأمل بعد التدريس</th><td class="practice" id="practice-31">أفكر بعمق في ممارساتي التدريسية التي أشعر أنها غير مناسبة.</td><td class="answer"><input type="radio" name="q31" value="دائماً" aria-labelledby="practice-31 choice-1"></td><td class="answer"><input type="radio" name="q31" value="أحياناً" aria-labelledby="practice-31 choice-2"></td><td class="answer"><input type="radio" name="q31" value="لا أمارسها" aria-labelledby="practice-31 choice-3"></td><td class="answer"><input type="radio" name="q31" value="فرصة للتحسين" aria-labelledby="practice-31 choice-4"></td></tr>
+<tr><td class="practice" id="practice-32">أغير ممارساتي التدريسية التي بحاجة لذلك.</td><td class="answer"><input type="radio" name="q32" value="دائماً" aria-labelledby="practice-32 choice-1"></td><td class="answer"><input type="radio" name="q32" value="أحياناً" aria-labelledby="practice-32 choice-2"></td><td class="answer"><input type="radio" name="q32" value="لا أمارسها" aria-labelledby="practice-32 choice-3"></td><td class="answer"><input type="radio" name="q32" value="فرصة للتحسين" aria-labelledby="practice-32 choice-4"></td></tr>
+<tr><td class="practice" id="practice-33">أناقش ممارساتي التدريسية مع زملائي الآخرين.</td><td class="answer"><input type="radio" name="q33" value="دائماً" aria-labelledby="practice-33 choice-1"></td><td class="answer"><input type="radio" name="q33" value="أحياناً" aria-labelledby="practice-33 choice-2"></td><td class="answer"><input type="radio" name="q33" value="لا أمارسها" aria-labelledby="practice-33 choice-3"></td><td class="answer"><input type="radio" name="q33" value="فرصة للتحسين" aria-labelledby="practice-33 choice-4"></td></tr>
+<tr><td class="practice" id="practice-34">أشاهد حصص صفية ينفذها زملائي الآخرين.</td><td class="answer"><input type="radio" name="q34" value="دائماً" aria-labelledby="practice-34 choice-1"></td><td class="answer"><input type="radio" name="q34" value="أحياناً" aria-labelledby="practice-34 choice-2"></td><td class="answer"><input type="radio" name="q34" value="لا أمارسها" aria-labelledby="practice-34 choice-3"></td><td class="answer"><input type="radio" name="q34" value="فرصة للتحسين" aria-labelledby="practice-34 choice-4"></td></tr>
+<tr><td class="practice" id="practice-35">أمارس التعلم الذاتي للبحث عن المعرفة.</td><td class="answer"><input type="radio" name="q35" value="دائماً" aria-labelledby="practice-35 choice-1"></td><td class="answer"><input type="radio" name="q35" value="أحياناً" aria-labelledby="practice-35 choice-2"></td><td class="answer"><input type="radio" name="q35" value="لا أمارسها" aria-labelledby="practice-35 choice-3"></td><td class="answer"><input type="radio" name="q35" value="فرصة للتحسين" aria-labelledby="practice-35 choice-4"></td></tr>
+<tr><td class="practice" id="practice-36">سأستمر في البحث عن طرق أفضل للتدريس.</td><td class="answer"><input type="radio" name="q36" value="دائماً" aria-labelledby="practice-36 choice-1"></td><td class="answer"><input type="radio" name="q36" value="أحياناً" aria-labelledby="practice-36 choice-2"></td><td class="answer"><input type="radio" name="q36" value="لا أمارسها" aria-labelledby="practice-36 choice-3"></td><td class="answer"><input type="radio" name="q36" value="فرصة للتحسين" aria-labelledby="practice-36 choice-4"></td></tr>
+            </tbody>
+        </table>
     </div>
-
-    <!-- نافذة منبثقة لرسائل النجاح والتنبيه -->
-    <div id="modalNotification" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden no-print">
-        <div class="bg-white rounded-xl p-5 max-w-sm w-full mx-4 shadow-xl text-center">
-            <div id="modalIcon" class="text-4xl mb-2">✅</div>
-            <h3 id="modalTitle" class="text-base font-bold text-gray-800 mb-1">تم بنجاح</h3>
-            <p id="modalText" class="text-xs text-gray-600 mb-4">تم إرسال إجابات الاستمارة بنجاح وتوليد ملف PDF وحفظه في مجلد Google Drive المرتبط.</p>
-            <button onclick="closeModal()" class="bg-teal-800 text-white px-4 py-2 rounded-lg text-xs font-bold w-full hover:bg-teal-900 cursor-pointer">حسناً</button>
-        </div>
+    <footer class="approvals" aria-label="التوقيعات والختم">
+        <section class="signature-card" aria-label="توقيع وكيلة الشؤون التعليمية والمدرسية">
+            <div class="signature-role">وكيلة الشؤون التعليمية والمدرسية:</div>
+            <div class="signature-name">أ. شيخه حبيب الحمود</div>
+            <div class="signature-line"><span>التوقيع:</span><img data-approval class="signature-image" src="assets/taml/vice-principal-signature-20261010.png" width="428" height="166" alt="توقيع وكيلة الشؤون التعليمية والمدرسية باللون الأسود"></div>
+        </section>
+        <div class="seal"><img data-approval src="assets/taml/school-stamp-20261010.png" width="650" height="414" alt="ختم ثانوية الحليلة الأولى"></div>
+        <section class="signature-card" aria-label="توقيع مديرة المدرسة">
+            <div class="signature-role">مديرة المدرسة:</div>
+            <div class="signature-name">أ. سهاد أحمد الكشي</div>
+            <div class="signature-line"><span>التوقيع:</span><img data-approval class="signature-image" src="assets/taml/principal-signature-20261010.png" width="343" height="102" alt="توقيع مديرة المدرسة باللون الأزرق"></div>
+        </section>
+    </footer>
+</main>
+<div id="modalNotification" class="modal hidden no-print" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+        <div id="modalIcon">✅</div>
+        <h3 id="modalTitle">تم بنجاح</h3>
+        <p id="modalText">تم إرسال إجابات الاستمارة بنجاح وتوليد ملف PDF وحفظه في مجلد Google Drive المرتبط.</p>
+        <button type="button" onclick="closeModal()" class="button button--print">حسناً</button>
     </div>
-
-    <script>
-        let isSubmitted = false;
-
-        // دالة الطباعة والحفظ كملف PDF على الجهاز مباشرة
-        function handlePrint() {
-            try {
-                window.print();
-            } catch (error) {
-                console.error("Print error:", error);
-                window.focus();
-                window.print();
-            }
-        }
-
-        // دالة إرسال البيانات إلى جوجل فورم والـ Script المسؤول عن الحفظ في جوجل درايف
-        function submitToGoogleForm() {
-            const teacherName = document.getElementById('teacherName').value.trim();
-            const subject = document.getElementById('subjectName').value.trim();
-            
-            if (!teacherName || !subject) {
-                showModal('⚠ تنبيه', 'يرجى كتابة (اسم المعلمة) و(المادة) قبل إرسال الاستمارة.', '⚠️');
-                return;
-            }
-
-            isSubmitted = true;
-            
-            // محاكاة إرسال البيانات ومعالجتها وتخزين الـ PDF في Google Drive
-            showModal('✨ جاري الحفظ والإرسال', 'جاري إرسال الاستمارة وإنشاء نسخة PDF محفوظة في Google Drive...', '⏳');
-            
-            setTimeout(() => {
-                showModal('✅ تم الحفظ في Google Drive', 'تم إرسال الاستمارة بنجاح، وحفظ نسخة PDF تلقائياً في مجلد جوجل درايف المخصص!', '☁️');
-            }, 1200);
-        }
-
-        function showModal(title, text, icon) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalText').innerText = text;
-            document.getElementById('modalIcon').innerText = icon;
-            document.getElementById('modalNotification').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('modalNotification').classList.add('hidden');
-        }
-
-        function resetForm() {
-            const inputs = document.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                if (input.value !== "1447 هـ") {
-                    input.value = '';
-                }
+</div>
+<script>
+let isSubmitted = false;
+// Wait for the three approval images before opening the print dialog.
+async function handlePrint() {
+    try {
+        const images = Array.from(document.querySelectorAll('img[data-approval]'));
+        await Promise.all(images.map(image => {
+            if (image.complete) return image.naturalWidth ? Promise.resolve() : Promise.reject(new Error(image.alt));
+            return new Promise((resolve, reject) => {
+                image.addEventListener('load', resolve, {once: true});
+                image.addEventListener('error', () => reject(new Error(image.alt)), {once: true});
             });
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => radio.checked = false);
-            isSubmitted = false;
-        }
-    </script>
+        }));
+        if (document.fonts) await document.fonts.ready;
+        window.print();
+    } catch (error) {
+        console.error('Print preparation error:', error);
+        showModal('تعذر تجهيز الطباعة', 'لم يكتمل تحميل التوقيعات أو الختم. حدّث الصفحة ثم أعد المحاولة.', '⚠️');
+    }
+}
+// Existing submission behavior is unchanged by the signature/print update.
+function submitToGoogleForm() {
+    const teacherName = document.getElementById('teacherName').value.trim();
+    const subject = document.getElementById('subjectName').value.trim();
+    if (!teacherName || !subject) {
+        showModal('⚠ تنبيه', 'يرجى كتابة (اسم المعلمة) و(المادة) قبل إرسال الاستمارة.', '⚠️');
+        return;
+    }
+    isSubmitted = true;
+    showModal('✨ جاري الحفظ والإرسال', 'جاري إرسال الاستمارة وإنشاء نسخة PDF محفوظة في Google Drive...', '⏳');
+    setTimeout(() => {
+        showModal('✅ تم الحفظ في Google Drive', 'تم إرسال الاستمارة بنجاح، وحفظ نسخة PDF تلقائياً في مجلد جوجل درايف المخصص!', '☁️');
+    }, 1200);
+}
+function showModal(title, text, icon) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalText').innerText = text;
+    document.getElementById('modalIcon').innerText = icon;
+    document.getElementById('modalNotification').classList.remove('hidden');
+}
+function closeModal() { document.getElementById('modalNotification').classList.add('hidden'); }
+function resetForm() {
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        if (input.value !== '1447 هـ') input.value = '';
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+    isSubmitted = false;
+}
+</script>
 </body>
 </html>
